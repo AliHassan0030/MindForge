@@ -6,6 +6,15 @@
     <title>MindForge AI Tutor</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      // Polyfill process.env for browser environment
+      // This placeholder is replaced by Netlify build command
+      window.process = {
+        env: {
+          API_KEY: "__NETLIFY_API_KEY_PLACEHOLDER__"
+        }
+      };
+    </script>
     <style>
       body {
         font-family: 'Inter', sans-serif;
@@ -43,5 +52,6 @@
 </head>
   <body>
     <div id="root"></div>
+    <script type="module" src="./index.tsx"></script>
   </body>
 </html>
