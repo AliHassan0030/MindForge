@@ -1,9 +1,17 @@
 
 import { QuizData, Difficulty, ChatMessage } from "../types";
-import { Type } from "@google/genai";
+
+// DEFINITION: Local Type object to replace the SDK import.
+// This prevents "process is not defined" errors in the browser.
+const Type = {
+  OBJECT: 'OBJECT',
+  STRING: 'STRING',
+  ARRAY: 'ARRAY',
+  INTEGER: 'INTEGER',
+  NUMBER: 'NUMBER'
+};
 
 // We define the schema here to pass it to the backend function
-// The backend will pass this to Gemini to enforce JSON structure
 const QUIZ_SCHEMA = {
   type: Type.OBJECT,
   properties: {
@@ -71,6 +79,7 @@ If a user asks for a quiz, suggest they use the "Create Quiz" feature for a full
 
 // Helper to fetch from Netlify Function
 async function callNetlifyGemini(payload: any) {
+  // Note: /.netlify/functions/gemini is the standard path for Netlify Functions
   const response = await fetch('/.netlify/functions/gemini', {
     method: 'POST',
     headers: {
@@ -150,14 +159,7 @@ export const generateQuiz = async (
 
 export const chatWithTutor = async (history: ChatMessage[], newMessage: string): Promise<string> => {
   try {
-    // Construct the chat history manually for the stateless request
-    // The previous implementation used ai.chats.create, but for a simple proxy, 
-    // we'll send the conversation context as the prompt content.
-    
     // Convert history to Gemini "contents" format
-    // Note: This is a simplified stateless chat. For true multi-turn, 
-    // we pass previous turns in the 'contents' array.
-    
     const parts = [
       { text: `System: ${CHAT_SYSTEM_INSTRUCTION}` },
       ...history.map(msg => ({
