@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,15 +7,6 @@
     <title>MindForge AI Tutor</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-      // Polyfill process.env for browser environment
-      // This placeholder is replaced by Netlify build command
-      window.process = {
-        env: {
-          API_KEY: "__NETLIFY_API_KEY_PLACEHOLDER__"
-        }
-      };
-    </script>
     <style>
       body {
         font-family: 'Inter', sans-serif;
@@ -39,13 +31,13 @@
   <script type="importmap">
 {
   "imports": {
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
     "react/": "https://aistudiocdn.com/react@^19.2.0/",
     "react": "https://aistudiocdn.com/react@^19.2.0",
     "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
     "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
-    "@react-oauth/google": "https://esm.sh/@react-oauth/google@0.12.1?external=react,react-dom",
-    "jwt-decode": "https://esm.sh/jwt-decode@4.0.0"
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "jwt-decode": "https://aistudiocdn.com/jwt-decode@^4.0.0",
+    "@react-oauth/google": "https://aistudiocdn.com/@react-oauth/google@^0.12.2"
   }
 }
 </script>
